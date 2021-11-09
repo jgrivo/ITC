@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+        <html>
+                <head>
+                        <title>Assignment 2</title>
+                </head>
+        <h1 style="font-family:Calibri;font-size:50px;text-align:left">Income Tax Calculator</h1>
+        <br><br>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="num1">Type in income</label>
+        <input id="num1" name="num1" type="number" style="font-family:Calibri;text-align:left">
+        <button onclick="calculatetax()"style="font-family:Calibri;text-align:left">Calculate</button>
+        </p>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="tax" id="tax">Calculated income tax:</label> 
+        </p><br><br>
+        <a href="index.html" style="font-family:Calibri;text-align:left">
+               <p style="font-family:Calibri;text-align:left">Please click here to return to the homepage</p>
+                </a>
+    <script>
+        function calculatetax(){
+            var a, b, c;
+             a = document.getElementById("num1").value*1;
+            console.log(a)
+            console.log(b)
+            console.log(c)
+            if (a <= 250000){
+                 b = '0';
+                let c = b;
+            } else if (a > 250000 && a <= 400000){
+                 b = (a - 250000)*.20
+                let c = b;
+            } else if (a > 400000 && a <= 800000){
+                 b = ((a - 400000)*(.25))+30000;
+                let c = b;
+            } else if (a > 800000 && a <= 2000000){
+                 b = ((a - 800000)*(.30))+130000;
+                let c = b;
+            }  else if (a > 2000000 && a <= 8000000){
+                 b = ((a - 2000000)*(.32))+490000;
+                let c = b;
+            } else if (a > 8000000){
+                 b = ((a - 8000000)*(.35))+2410000;
+                let c = b;
+            }
+            document.getElementById("tax").innerHTML='Calculated income tax: ' +b;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Rivo, Joshua</title>
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+        <br><br>
+        <h1 style="font-family:Calibri;font-size:40px;text-align:left">Joshua's Webpage</h1>
+        <p style="font-family:Calibri;font-size:30px;text-align:left">This is a collection of my published assignments on Introduction to Computing.</p>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #ffffff;
+  color: black;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #ffffff;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 400px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown a:hover {background-color: #ffffff;}
+.show {display: block;}
+</style>
+</head>
+<body>
+<h3 style="font-family:Calibri;font-size:20;text-align:left">Please click on "My Assignments" button to open the list of assignments.</h3>
+<div class="dropdown">
+  <button onclick="myFunction()"class="dropbtn"style="font-family:Calibri;font-size:20px;text-align:left">My Assignments</button>
+  <div id="myDropdown"class="dropdown-content">
+    <a href = "sampleComputations.html"style="font-family:Calibri;font-size:20px;text-align:left">1 - Simple Computations in JavaScript</a>
+    <a href = "incomeTaxCalculator.html" style="font-family:Calibri;font-size:20px;text-align:left">2 - Income Tax Calculator</a>
+    <a href = "nthFactorialSumAndAverage.html" style="font-family:Calibri;font-size:20px;text-align:left">3 - Nth Factorial, Sum, and Average</a>
+    <a href = "simplePayroll.html" style="font-family:Calibri;font-size:20px;text-align:left">4 - Simple Payroll</a>
+  </div>
+</div>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script> 
+        <!-- Load external JavaScript -->
+        <script src="scripts.js"></script>
+    </body>
+</html>

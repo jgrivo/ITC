@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+        <html>
+                <head>
+                        <title>Assignment 1</title>
+                </head>
+        <h1 style="font-family:Calibri;font-size:50px;text-align:left">Simple Computations in JavaScript</h1>
+        <br><br>
+        <p style="font-family:Calibri;text-align:left">Celsius (C) to Fahrenheit (F)</p>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="num1">Type in number (Celsius)</label>
+        <input id="num1"name="num1"type="number">
+        <button onclick="converttof()">Convert</button>
+        </p>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="sum"id="unconvertedf">Result:</label>  
+        <input id="convertedf"name="convertedf" type ="number"readonly></input>
+        </p><br><br>
+        <p style="font-family:Calibri;text-align:left"> Fahrenheit (F) to Celsius (C) </p>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="num1">Type in number (Fahrenheit)</label>
+        <input id="num2"name="num2"type="number">
+        <button onclick="converttoc()">Convert</button>
+        </p>
+        <p style="font-family:Calibri;;text-align:left">
+        <label for="unconvertedc"id="unconvertedc">Result:</label>  
+        <input id="convertedc"name="convertedc"type="number"readonly></input>
+        </p><br><br>
+        <p style="font-family:Calibri;text-align:left"> Meters (M) to Feet (Ft) </p>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="num1">Type in number (Meters)</label>
+        <input id="num3"name="num3"type="number">
+        <button onclick="converttoft()">Convert</button>
+        </p>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="unconvertedft"id="unconvertedft">Result:</label>  
+        <input id="convertedft"name="convertedft"type="number"readonly></input>
+        </p><br><br>
+        <p style="font-family:Calibri;align:left">Feet (Ft) to Meters (M)</p>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="num1">Type in number (Feet)</label>
+        <input id="num4"name="num4"type="number">
+        <button onclick="converttom()">Convert</button>
+        </p>
+        <p style="font-family:Calibri;text-align:left">
+        <label for="unconvertedm"id="unconvertedm">Result: </label>  
+        <input id="convertedm"name="convertedm"type="number"readonly></input>
+        </p> <br><br>
+        <a href="index.html" style="font-family:Calibri;align:left">
+               <p style="font-family:Calibri;text-align:left">Please click here to return to the homepage</p>
+                </a>
+        <script>
+                function converttof(){
+                        var a;
+                        a = document.getElementById("num1").value*1;
+                        console.log(a)
+                        let f = (a*1.8)+32
+                         document.getElementById("unconvertedf").innerHTML='Result:';
+                        document.getElementById("convertedf").value=f;
+                }
+                function converttoc(){
+                        var a;
+                        a = document.getElementById("num2").value*1;
+                        console.log(a)
+                        let c = (a-32)/1.8
+                         document.getElementById("unconvertedc").innerHTML='Result:';
+                        document.getElementById("convertedc").value=c;
+                }
+                function converttoft(){
+                        var a;
+                        a = document.getElementById("num3").value*1;
+                        console.log(a)
+                        let ft = a*3.2808
+
+                         document.getElementById("unconvertedft").innerHTML='Result:';
+                        document.getElementById("convertedft").value=ft;
+                }
+                function converttom(){
+                        var a;
+                        a = document.getElementById("num4").value*1;
+                        console.log(a)
+
+                        let m = a/3.2808
+
+                         document.getElementById("unconvertedm").innerHTML='Result';
+                        document.getElementById("convertedm").value=m;
+                }
+                </script>
+</body>
+</html>

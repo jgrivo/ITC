@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment 4</title>
+</head>
+<h1 style="font-family:Calibri;font-size:50px;text-align:left">Simple Payroll</h1>
+<br>
+<p style="font-family:Calibri;text-align:left">Employee details</p>
+<p style="font-family:Calibri;text-align:left">
+<label for="unitx">Name:</label>    
+<input id="unitx"name="unitx"type="name"></input>
+<label for="daysworked">Number of days worked:</label>
+<input id="daysworked"name="daysworked"type="number"oninput="calculateamount()"></input>
+<label for="dailyrate">Daily rate:</label>
+<input id="dailyrate"name="dailyrate"type="number"oninput="calculateamount()"></input>
+<label for="deductions">Deduction/s:</label>
+<input id="deductions"name="deductions"type="number"oninput="calculateamount()"></input>
+<br><br>
+<button onclick="addtotable()">Add to Payroll</button>
+<br><br>
+<label for="grosssalary">Gross salary:</label>
+<input id="grosssalary"name="grosssalary"type="number"readonly></input>
+<label for="quantity">Net salary:</label>
+<input id="quantity"name="quantity"type="number"readonly></input>
+</p>
+<p style="font-family:Calibri;text-align:left">
+<label for="units">Employee count:</label>
+<input id="units"name="units"type="number"readonly></input>
+<br><br>
+<button onclick="cleartable()">Clear payroll</button>
+<br><br> 
+<label for="removeuni">Remove employee:</label>
+<input id="removeuni"name="removeuni"type="number"></input>
+<button onclick="removeunit()">Remove</button>  
+</p>
+<p id="table"></p>
+<br><br>
+<a href="index.html"style="font-family:Calibri;align:left">
+               <p style="font-family:Calibri;text-align:left">Please click here to return to the homepage</p>
+                </a>
+<script>
+    function payroll(){
+        table=[];
+        document.getElementById("units").value=table.length;
+        document.getElementById("table").innerHTML="";    
+    }
+    function cleartable(){
+        var clear;
+        clear=confirm("Delete all unit/s from the table?");
+        if (clear) {
+             payroll();
+        }
+    }
+    function addtotable(){
+         var tableunit = {
+             "unit": "1",
+             "dailyrate": 0,
+             "daysworked": 1,
+             "deductions":0,
+             "grosssalary":0,
+            "unitquantity" : function unitquantity(){
+                 return Math.round((this.dailyrate*this.daysworked)-this.deductions);  
+               }
+            };
+          tableunit.unit=document.getElementById("unitx").value;
+          tableunit.daysworked=document.getElementById("daysworked").value;
+          tableunit.dailyrate=document.getElementById("dailyrate").value;
+          tableunit.deductions=document.getElementById("deductions").value;
+          tableunit.grosssalary=document.getElementById("grosssalary").value;
+          console.log(tableunit.unit);
+          console.log(tableunit.daysworked);
+          console.log(tableunit.dailyrate);
+            table.push(tableunit);
+          console.log(table.length);
+          document.getElementById("units").value=table.length;
+          showtable();
+    }
+    function calculateamount() {
+          var a, b, a, c, d;
+          a = document.getElementById("daysworked").value*1;
+          b = document.getElementById("dailyrate").value*1;
+          c = document.getElementById("deductions").value*1;
+          d = document.getElementById("grosssalary").value*1;
+          d = Math.round(a * b);
+          e = Math.round(a * b) - c; 
+          console.log(e);
+          document.getElementById("quantity").value=e;
+          document.getElementById("grosssalary").value=d;
+    }    
+    function removeunit(){
+        var remove;
+        var unitnum;
+        unitnum=document.getElementById("removeuni").value;
+        remove=confirm("Remove employee number "+unitnum+"?");
+        if (remove){
+            table.splice(unitnum-1,1);
+            document.getElementById("units").value=table.length;
+             showtable();   
+        }
+    }
+    function showtable(){
+        var i,l,tabletext,entirequantity,ln;
+        var theader,tbody,tb,tfooter;
+        theader ="<thead>";
+        theader+="<tr>";
+        theader+='<th style="font-family:Calibri;">Number of</th>';
+        theader+='<th style="font-family:Calibri;width:100px; text-align:left">employees</th>';
+        theader+='<th style="font-family:Calibri;width:100px;text-align: left">Number of days worked</th>';
+        theader+='<th style="font-family:Calibri;width:100px;text-align:left">Daily rate</th>';
+        theader+='<th style="font-family:Calibri;width:100px;text-align:;left">Gross pay</th>';
+        theader+='<th style="font-family:Calibri;width:100px;text-align:left">Deduction/s</th>';
+        theader+='<th style="font-family:Calibri;width:100px;">Net Pay</th>';
+        theader+="</tr>";
+        theader+="</thead>";
+        l = table.length;
+        for (i=0,entirequantity=0,tabletext="",tbody='';i<l;i++){
+            ln=i+1;    
+            tbody += "<tr>";
+                +'<td style="font-family:Calibri;">'+ln+'</td>'
+                +'<td style="font-family:Calibri;width:100px;">'+table[i].unit+'</td>'
+                +'<td style="font-family:Calibri;width:100px; text-align:left">'+table[i].daysworked+'</td>'
+                +'<td style="font-family:Calibri;width:100px; text-align:left">'+table[i].dailyrate+'</td>'
+                +'<td style="font-family:Calibri;width:100px; text-align:left">'+table[i].grosssalary+'</td>'
+                +'<td style="font-family:Calibri;width:100px; text-align:left">'+table[i].deductions+'</td>'
+                +'<td style="font-family:Calibri;width:100px; text-align:left">'+table[i].unitquantity()+'</td>'                
+                +"</tr>";
+            entirequantity+=table[i].unitquantity();
+        }
+       console.log(theader+tbody);
+        document.getElementById("table").innerHTML='<table style="border:none solid black">'+theader+tbody+"</table>";
+    }
+var table=[]; 
+</script>
+</body>
+</html>
